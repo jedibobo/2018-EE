@@ -1,0 +1,144 @@
+#include<stdio.h>  
+void letterqueue(int num);  
+int skip (int a);  
+int realletter (int a);  
+unsigned char count;  
+int main ()  
+{  
+    int n;  
+    scanf("%d %c",&n,&count);  
+    if (n==1)  
+    {  
+        letterqueue(1);  
+        putchar ('\n');  
+        return 0;  
+    }  
+    /*else if (n==19)  
+    {  
+        printf("TVWXYZBCDFGHJKLMNPQRSTVWXYZBCDFGHJKLM\n");  
+        printf(" N                                 P\n");  
+        printf("  Q                               R\n");  
+        printf("   S                             T\n");  
+        printf("    V                           W\n");  
+        printf("     X                         Y\n");  
+        printf("      Z                       B\n");  
+        printf("       C                     D\n");  
+        printf("        F                   G\n");  
+        printf("         H                 J\n");  
+        printf("          K               L\n");  
+        printf("           M             N\n");  
+        printf("            P           Q\n");  
+        printf("             R         S\n");  
+        printf("              T       V\n");  
+        printf("               W     X\n");  
+        printf("                Y   Z\n");  
+        printf("                 B C\n");  
+        printf("                  D\n");  
+        printf("                 F G\n");  
+        printf("                H   J\n");  
+        printf("               K     L\n");  
+        printf("              M       N\n");  
+        printf("             P         Q\n");  
+        printf("            R           S\n");  
+        printf("           T             V\n");  
+        printf("          W               X\n");  
+        printf("         Y                 Z\n");  
+        printf("        B                   C\n");  
+        printf("       D                     F\n");  
+        printf("      G                       H\n");  
+        printf("     J                         K\n");  
+        printf("    L                           M\n");  
+        printf("   N                             P\n");  
+        printf("  Q                               R\n");  
+        printf(" S                                 T\n");  
+        printf("VWXYZBCDFGHJKLMNPQRSTVWXYZBCDFGHJKLMN\n");  
+        return 0;  
+    }  */
+    //printf("%d\n",++count);  
+    letterqueue ((2*n-1));  
+    putchar ('\n');//printf("%d\n",count);  
+    for (int i=0;i<(n-1);i++)  
+    {  
+        if (i==(n-2))  
+        {  
+            for (int j=0;j<i+1;j++)  
+            {  
+                putchar (' ');  
+            }  
+            letterqueue(1);  
+            putchar ('\n');  
+        }  
+        else  
+        {  
+            for (int j=0;j<i+1;j++)  
+            {  
+                putchar (' ');  
+            }  
+            letterqueue (1);  
+            for (int j=0;j<(2*n-5-2*i);j++)  
+            {  
+                putchar (' ');  
+            }  
+            letterqueue(1);  
+            putchar ('\n');  
+        }  
+    }  
+    for (int i=(n-2);i>0;i--)  
+    {  
+        for (int j=0;j<i;j++)  
+        {  
+            putchar (' ');  
+        }  
+        letterqueue(1);  
+        for (int j=0;j<(2*n-3-2*i);j++)  
+        {  
+            putchar (' ');  
+        }  
+        letterqueue(1);  
+        putchar ('\n');  
+    }  
+    letterqueue ((2*n-1));  
+    putchar ('\n');  
+      
+    return 0;  
+}  
+int realletter (int a)  
+{  
+    if (a>90)  
+    {  
+        while (a>90)  
+        {  
+            a-=26;  
+        }  
+    }  
+    else if (a<65)  
+    {  
+        while (a<65)  
+        {  
+            a+=26;  
+        }  
+    }  
+    return skip(a);  
+}  
+void letterqueue (int num)  
+{     
+    for (int i=0;i<num;i++)  
+    {  
+        putchar (realletter(count+i));  
+    }  
+    count+=num;  
+      
+}  
+int skip (int a)  
+{  
+    if (a==65||a==69||a==73||a==79||a==85)  
+    {     
+        count++;  
+        return (a+1);  
+    }  
+    else   
+    {  
+          
+        return a;  
+    }  
+}   
